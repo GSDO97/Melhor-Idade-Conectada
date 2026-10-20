@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="Graphicloads-Medical-Health-Human-brain.256.png" type="favicon">
+    <link rel="stylesheet" href="skin.css">
+    <title>Melhor Idade Conectada</title>
+</head>
+<body>
+    <!-- INICIO DO FORMULARIO -->
+    <form action="#" method="POST" class="form-voluntario" id="meuFormularioVoluntario">
+    
+    <h2>Seja um Voluntário 🤝</h2>
+    <p class="form-subtitulo">Preencha os campos abaixo para fazer parte da nossa equipe.</p>
+    <!-- CADASTRO DE VOLUNTARIOS -->
+    <div class="voluntario-group">
+        <label for="nome">Nome Completo</label>
+        <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
+    </div>
+
+    <div class="voluntario-row">
+        <div class="voluntario-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" placeholder="seu.email@exemplo.com" required>
+        </div>
+        
+        <div class="voluntario-group curta">
+            <label for="idade">Idade</label>
+            <input type="number" id="idade" name="idade" min="14" max="120" placeholder="Ex: 25" required>
+        </div>
+    </div>
+
+    <div class="voluntario-row">
+        <div class="voluntario-group">
+            <label for="telefone">Telefone / WhatsApp</label>
+            <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-9999" required>
+        </div>
+
+        <div class="voluntario-group">
+            <label for="disponibilidade">Disponibilidade</label>
+            <select id="disponibilidade" name="disponibilidade" required>
+                <option value="" disabled selected>Selecione uma opção</option>
+                <option value="manha">Manhã</option>
+                <option value="tarde">Tarde</option>
+                <option value="noite">Noite</option>
+                <option value="finais-semana">Finais de Semana</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="voluntario-group">
+        <label for="mensagem">Por que você quer ser voluntário? (Opcional)</label>
+        <textarea id="mensagem" name="mensagem" rows="4" placeholder="Conte um pouco sobre suas motivações..."></textarea>
+    </div>
+
+    <button type="submit" class="btn-voluntario-enviar">Enviar Cadastro</button>
+    <!-- CANCELAMENTO DO CADASTRO -->
+    <div class="form-voluntario-cancelar">
+        <h3>Mudar de Ideia ou Sair 😔</h3>
+        <p>Se você já é cadastrado e não pode mais participar, digite seu e-mail abaixo para remover sua inscrição.</p>
+        
+        <div class="voluntario-row">
+            <div class="voluntario-group">
+                <input type="email" id="email-cancelar" placeholder="Digite o e-mail cadastrado">
+            </div>
+            <button type="button" id="btn-cancelar-inscricao" class="btn-voluntario-excluir">Cancelar Inscrição</button>
+        </div>
+    </div>
+    </form>
+
+    <script type="module">
+        //importaçao do firebase//
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+      import {
+            getFirestore,
+            collection,
+            addDoc,
+            getDocs,
+            query,
+            where,
+            deleteDoc,
+            doc
+}       from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+
+        // configuraçao do firebase:
+        const firebaseConfig = {
+            apiKey: "AIzaSyCkB3EVU9CehepJd7l0g5_zcClm7fE83eE",
+            authDomain: "melhor-idade-conectada.firebaseapp.com",
+            projectId: "melhor-idade-conectada",
+            storageBucket: "melhor-idade-conectada.firebasestorage.app",
+            messagingSenderId: "129968297482",
+            appId: "1:129968297482:web:9d61a6befb3e3a1c488f43",
+            measurementId: "G-K8X0CQMJWD"
+        };
+
+        // conexao com  Banco de Dados
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const colecaoVoluntarios = collection(db, "voluntarios");
+
+        //  SALVAR O CADASTRO ---
+        document.getElementById('meuFormularioVoluntario').addEventListener('submit', async (e) => {
+            if (e.submitter && e.submitter.classList.contains('btn-voluntario-enviar')) {
+                e.preventDefault();
+
+                const dadosVoluntario = {
+                    nome: document.getElementById('nome').value,
+                    email: document.getElementById('email').value,
+                    idade: document.getElementById('idade').value,
+                    telefone: document.getElementById('telefone').value,
+                    disponibilidade: document.getElementById('disponibilidade').value,
+                    mensagem: document.getElementById('mensagem').value,
+                    dataCadastro: new Date().toLocaleDateString('pt-BR')
+                };
+
+                try {
+                    await addDoc(colecaoVoluntarios, dadosVoluntario);
+                    alert("🎉 Cadastro realizado com sucesso! Muito obrigado.");
+                    document.getElementById('meuFormularioVoluntario').reset();
+                } catch (erro) {
+                    console.error("Erro ao salvar:", erro);
+                    alert("Houve um erro ao salvar o seu cadastro. Tente novamente.");
+                }
+            }
+        });
+
+        // --- CANCELAR INSCRIÇAO ---
+        document.getElementById('btn-cancelar-inscricao').addEventListener('click', async () => {
+            const emailParaCancelar = document.getElementById('email-cancelar').value.trim();
+
+            if (!emailParaCancelar) {
+                alert("Por favor, digite o e-mail cadastrado para cancelar.");
+                return;
+            }
+
+            if (confirm("Tem certeza que deseja remover sua inscrição do nosso projeto?")) {
+                try {
+                    const consulta = query(colecaoVoluntarios, where("email", "==", emailParaCancelar));
+                    const resultadoConsulta = await getDocs(consulta);
+
+                    if (resultadoConsulta.empty) {
+                        alert("Nenhum cadastro foi encontrado com esse e-mail.");
+                        return;
+                    }
+
+                    resultadoConsulta.forEach(async (documento) => {
+                        await deleteDoc(doc(db, "voluntarios", documento.id));
+                    });
+
+                    alert("Sua inscrição foi cancelada e seus dados foram removidos do sistema. 😔");
+                    document.getElementById('email-cancelar').value = "";
+                } catch (erro) {
+                    console.error("Erro ao excluir:", erro);
+                    alert("Houve um erro ao processar o cancelamento.");
+                }
+            }
+        });
+    </script>
+</body>
+</html>

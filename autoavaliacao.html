@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="skin.css">
+    <link rel="shortcut icon" href="Graphicloads-Medical-Health-Human-brain.256.png" type="favicon">
+    <title>Melhor Idade Conectada</title>
+</head>
+<body>
+
+    <!-- Menu principal -->
+    <div>
+        <header class="menu">
+            <nav>
+                <a href="index.html">Menu</a>
+                <a href="consulta.html">consulta</a>
+                <a href="conteudo_ed.html">Conteudo Educativo</a>
+                <a href="cadastro.html">Cadastro de Voluntarios</a>
+            </nav>
+        </header>
+    </div>
+
+    <!-- Autoavaliação  -->
+    <div class="box-quiz">
+        <h2>Autoavaliação Breve para Idosos</h2>
+        
+        <!--  TELA INICIAL  -->
+        <div id="tela-inicial" class="tela-passo ativa">
+            <div class="aviso-termo">
+                <strong>Aviso Importante:</strong> Esta é uma ferramenta de triagem informativa e de caráter educativo. 
+                <strong>Ela não substitui, em hipótese alguma, uma consulta ou diagnóstico realizado por um psicólogo ou médico psiquiatra.</strong>
+            </div>
+            <button onclick="iniciarQuiz()" class="btn-acao">Iniciar Avaliação</button>
+        </div>
+
+        <!--  PERGUNTAS  -->
+        <div id="tela-perguntas" class="tela-passo">
+            <button onclick="falarPergunta()" class="btn-som">🔊 Ouvir Pergunta</button>
+            <p id="progresso" class="texto-progresso"></p>
+            <h3 id="texto-pergunta" class="pergunta-titulo"></h3>
+            
+            <p>Escolha uma nota de 0 a 10 para a pergunta acima:</p>
+            <input type="number" id="campo-nota" class="input-nota" min="0" max="10" placeholder="0-10">
+            <br>
+            <button onclick="avancarPergunta()" class="btn-acao">Avançar</button>
+        </div>
+
+        <!--  RESULTADO  -->
+        <div id="tela-resultado" class="tela-passo">
+            <h3>Resultado da Autoavaliação</h3>
+            <p id="pontos-finais" class="texto-pontos"></p>
+            <p id="mensagem-ajuda" class="resultado-texto"></p>
+            <hr class="linha-separadora">
+            <p class="texto-rodape">
+                Se estiver em crise severa ou emergência, procure imediatamente o serviço de saúde mais próximo ou ligue para o CVV no número 188.
+            </p>
+            <button onclick="reiniciarQuiz()" class="btn-acao">Refazer Teste</button>
+        </div>
+    </div>
+
+    <script>
+        //lista de perguntas
+        const listaPerguntas = [
+            "Nos últimos dias, tenho sentido tristeza, desânimo ou falta de vontade de fazer coisas que antes eu gostava?",
+            "Tenho me sentido muito preocupado, tenso ou inquieto, mesmo sem motivo claro?",
+            "Meu sono mudou: durmo demais, de menos ou acordo cansado?",
+            "Tenho sentido meu corpo mais pesado, cansado ou com dores que pioram quando estou triste ou ansioso?",
+            "Tenho evitado conversar com pessoas, sair de casa ou participar de atividades?",
+            "Sinto que meus pensamentos estão mais negativos, como se nada fosse melhorar ou como se eu estivesse atrapalhando alguém?"
+        ];
+        //controle da avaliaçao
+        let perguntaAtual = 0;
+        let somaPontos = 0;
+        //inicia a avaliaçao
+        function iniciarQuiz() {
+            document.getElementById('tela-inicial').classList.remove('ativa');
+            document.getElementById('tela-perguntas').classList.add('ativa');
+            carregarPergunta();
+        }
+        //carregar pergunta atual
+        function carregarPergunta() {
+            document.getElementById('progresso').innerText = `Pergunta ${perguntaAtual + 1} de ${listaPerguntas.length}`;
+            document.getElementById('texto-pergunta').innerText = listaPerguntas[perguntaAtual];
+            document.getElementById('campo-nota').value = "";
+            document.getElementById('campo-nota').focus();
+        }
+        //ler pergunta em voz alta
+        function falarPergunta() {
+            window.speechSynthesis.cancel(); 
+            const fala = new SpeechSynthesisUtterance(listaPerguntas[perguntaAtual]);
+            fala.lang = 'pt-BR';
+            fala.rate = 0.9; 
+            window.speechSynthesis.speak(fala);
+        }
+        //avança as perguntas
+        function avancarPergunta() {
+            const campo = document.getElementById('campo-nota');
+            const nota = parseInt(campo.value);
+
+            if (isNaN(nota) || nota < 0 || nota > 10) {
+                alert("Por favor, digite uma nota válida entre 0 e 10.");
+                return;
+            }
+
+            somaPontos += nota;
+            perguntaAtual++;
+
+            if (perguntaAtual < listaPerguntas.length) {
+                carregarPergunta();
+            } else {
+                mostrarResultado();
+            }
+        }
+        //mostra o resultado final
+        function mostrarResultado() {
+            document.getElementById('tela-perguntas').classList.remove('ativa');
+            document.getElementById('tela-resultado').classList.add('ativa');
+            
+            document.getElementById('pontos-finais').innerHTML = `Sua pontuação final: <strong>${somaPontos}</strong> de 60 pontos possíveis.`;
+            
+            const msg = document.getElementById('mensagem-ajuda');
+            
+            if (somaPontos >= 30) {
+                msg.innerText = "Atenção: Sua pontuação aponta para níveis elevados de sofrimento emocional recente. Sugerimos fortemente que procure ajuda especializada, como um psicólogo, médico de sua confiança ou o Plantão Psicológico/Unidade de Saúde mais próxima.";
+                msg.className = "resultado-texto resultado-alto";
+            } else if (somaPontos >= 15) {
+                msg.innerText = "Aviso: Você apresentou sinais moderados de desânimo ou ansiedade. Pode ser benéfico conversar com pessoas próximas, participar de grupos de apoio ou buscar orientação de um profissional para cuidar do seu bem-estar.";
+                msg.className = "resultado-texto resultado-moderado";
+            } else {
+                msg.innerText = "Sua pontuação indica baixos índices de sintomas emocionais negativos no momento. Continue monitorando sua saúde mental e praticando atividades saudáveis no seu dia a dia!";
+                msg.className = "resultado-texto resultado-baixo";
+            }
+        }
+        //reinicia a avaliaçao
+        function reiniciarQuiz() {
+            perguntaAtual = 0;
+            somaPontos = 0;
+            document.getElementById('tela-resultado').classList.remove('ativa');
+            document.getElementById('tela-inicial').classList.add('ativa');
+        }
+    </script>
+</body>
+</html>

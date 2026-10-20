@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="shortcut icon" href="Graphicloads-Medical-Health-Human-brain.256.png" type="favicon">
+    <link rel="stylesheet" href="skin.css">
+    <title>Melhor Idade Conectada</title>
+
+</head>
+<body>
+<p class="texto-plantao">
+Está passando por um momento difícil?<br>
+Respire fundo e acompanhe o exercício abaixo.
+</p>
+<a href="tel:188" class="cvv">
+💙 Precisa conversar com alguém? Ligue para o CVV - 188
+</a>
+<button onclick="falarTexto()" class="btn-som">
+🔊 Ouvir Instruções <!-- BOTAO DO EXERCICIO DE RESPIRAÇAO -->
+</button>
+
+    <div class="container">
+        
+        <!-- GIF DO EXERCICIO DE RESPIRAÇAO DA PAGINA -->
+        <div class="gif-container">
+            
+            <img src="imagens/respiracao.gif" alt="GIF de Respiração">
+        </div>
+
+        <div class="instrucao" id="texto-instrucao">Prepare-se...</div>
+        <div class="contador" id="numero-contador">-</div>
+    </div>
+
+    <script>
+        const textoInstrucao = document.getElementById('texto-instrucao');
+        const numeroContador = document.getElementById('numero-contador');
+
+        // Configuração dos tempos em segundos
+        const tempos = [
+            { acao: 'Inspire...', segundos: 4 },
+            { acao: 'Segure...', segundos: 7 },
+            { acao: 'Solte o ar...', segundos: 8 }
+        ];
+
+        let indiceAtual = 0;
+        let tempoRestante = tempos[indiceAtual].segundos;
+
+        function atualizarCiclo() {
+            textoInstrucao.innerText = tempos[indiceAtual].acao;
+            numeroContador.innerText = tempoRestante;
+
+            if (tempoRestante === 0) {
+                indiceAtual = (indiceAtual + 1) % tempos.length;
+                tempoRestante = tempos[indiceAtual].segundos;
+            } else {
+                tempoRestante--;
+            }
+        }
+
+        setTimeout(() => {
+            atualizarCiclo();
+            setInterval(atualizarCiclo, 1000);
+        }, 2000);
+        function falarTexto() {
+    const fala = new SpeechSynthesisUtterance(
+        "Está passando por um momento difícil? Respire fundo e acompanhe o exercício abaixo."
+    );
+
+    fala.lang = 'pt-BR';
+    fala.rate = 0.9;
+
+    window.speechSynthesis.speak(fala);
+}
+    </script>
+
+</body>
+</html>

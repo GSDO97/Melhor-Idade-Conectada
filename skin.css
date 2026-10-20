@@ -1,0 +1,759 @@
+body{ /* cor principal da pagina*/
+    background-color: rgb(143, 242, 240); /*cor de fundo das paginas*/
+}
+
+.coluna{
+    display: grid;
+    grid-template-columns: repeat(12,1fr); /*grid conteiner*/
+    gap: 20px;
+   align-items: start;
+   position: relative;
+   
+   
+}
+/* ==========================
+   MENU PRINCIPAL
+========================== */
+.menu {                     
+  grid-column: 1;
+  grid-row: 1;
+  padding: 20px;
+  background-color: blue;
+
+  position: absolute; 
+  top: 0;              
+  left: 0;             
+  width: 100%;         
+  z-index: 10;   
+       
+}
+.menu a {
+  margin-right: 200px;   /* espaço entre os links */
+  font-size: 21px;
+  color: aliceblue;
+} 
+/* ==========================
+   ICONES DA PAGINA INICIAL
+   (Grupo de Apoio, Exercício,
+   Plantão, Autoavaliação etc.)
+========================== */
+.coluna a { /*paragrafos do segundo menu*/
+  grid-column: span 4; 
+  text-align: center;
+  font-size: 18px;
+  margin-top: 250px;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  
+  
+}
+.coluna a:nth-child(1) { text-align: left; margin-left: 100px }   /* Grupo de apoio */
+.coluna a:nth-child(3) { text-align: right; margin-right: 313px; position: relative; right: 190px; z-index: 50;} /* Plantão psicológico */
+.coluna a:nth-child(4) { text-align: left; margin-left: 100px; position: relative; top: 20px; z-index: 99;}   /* Autoavaliação */
+.coluna a:nth-child(6) { text-align: right; margin-right: 500px;position: relative; right: 125px;top: 20px;; } /* Emergência */
+.coluna a:nth-child(2) {
+  display: inline-block;
+  width: 120px; 
+  text-align: center; 
+  margin-left: -10px;  /* move Exercício para a esquerda */
+  z-index: 50;
+}
+
+.coluna a:nth-child(5) { 
+  text-align: center; 
+  margin-left: -350px;
+  top: 20px;
+  position: relative;  /* move Serviço de saúde para a esquerda */
+}
+.container {
+  position: absolute;
+  top: 150px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 100px);
+  row-gap: 120px;
+  width: 1000px;
+  z-index: 5;
+}
+
+.quadrado {
+  width: 100px;
+  height: 100px;
+  background-color: lightgray;
+  border: 2px solid black;
+}
+
+/* Ajuste fino de cada quadrado */
+.quadrado:nth-child(1) { justify-self: start; margin-left: 80px;margin-left: -150px; }  /* Grupo de apoio */
+.quadrado:nth-child(2) { justify-self: center; margin-right: 400px; }                    /* Exercício */
+.quadrado:nth-child(3) { justify-self: end; margin-right: 60px; position: relative; right: 220px; }   /*Plantão psicológico */
+.quadrado:nth-child(4) { justify-self: start; margin-left: -150px; margin-top: 80px; }  /* Autoavaliação */
+.quadrado:nth-child(5) { justify-self: center; margin-top: 80px; margin-right: 400px; } /* hospital mais proximo*/
+
+.quadrado:nth-child(6) { justify-self: end; margin-right: 150px; margin-top: 80px; position: relative; right: 120px;;  } /*emergencia*/
+.quadrado img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* mantém proporção da imagem dentro do quadrado */
+}
+.quadrado:nth-child(4) img { /*imagen autoavaliaçao*/
+  
+  height: 90%;  /* diminui a altura da imagem */
+  object-fit: contain;
+  position: relative;
+  top: 5px;
+}
+/* ==========================
+   MEDICA E BALÃO
+========================== */
+.medica {
+  position: fixed;   /* fixa no canto da tela */
+  bottom: 20px;      /* distância da parte de baixo */
+  right: -150px;       /* distância da lateral direita */
+  z-index: 100;      
+  top: -1px;
+  
+}
+
+.medica img {
+  width: 283px;      /* controla o tamanho da imagem */
+  height: auto;      /* mantém proporção */
+  z-index: 1;
+}
+.balao-texto {
+  position: absolute;
+  bottom: 250px;   /* ajusta para ficar dentro do balão */
+  right: -20px;     /* ajusta para alinhar no balão */
+  font-size: 16px;
+  font-weight: bold;
+  color: black;
+  background: transparent; 
+  z-index: 200;
+}
+/* ====================*=====
+   CONSULTAS
+===============*========== */
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f8ff;
+  text-align: center;
+  background-color: rgb(143, 242, 240);
+}
+
+.formulario {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 1000px;
+  margin: 20px auto;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  font-size: 18px; 
+  margin-left: 250px;
+}
+
+.formulario label {
+  display: block;
+  margin-top: 10px;
+  
+}
+
+.formulario input, .formulario select, .formulario button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 18px;
+  
+}
+
+.button {
+  background-color: #0250ed;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #45a049;
+}
+
+.agenda {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+}
+.agenda button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  margin-left: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.agenda button:hover {
+  background-color: darkred;
+}
+/* ==========================
+   CONTEÚDO EDUCATIVO
+========================== */
+.conteudo-educativo {
+  text-align: center;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  margin-top: 250px;
+}
+#frase {
+  font-size: 2em;       /* aumenta o tamanho da letra */
+  color: #e63946;       
+  font-weight: bold;    /* deixa em negrito */
+  font-family: "Georgia", serif; /* muda a fonte */
+}
+/* ==========================
+   GRUPO DE APOIO
+========================== */ 
+.retangulo { /* retangulos do grupo de apoio*/
+  background-color: #dcdcdc;
+  width: 70%;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 23px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  text-align: center;
+
+  /* controle de posição vertical */
+  position: relative;
+  top: 40px; /* quanto maior o número, mais pra baixo */
+  left: 150px;
+}
+.retangulo a{
+    color: black;
+    font-size: 35px;
+    font-weight: bold;
+    text-decoration: none;
+}
+.retangulo a:hover{
+    color: blue;
+}
+
+.idosos {
+  width: 400px;
+  display: block;
+  position: relative;
+  left: -20px; 
+  top: -450px;
+}
+.mensagem {
+  position: relative;
+  top: 100px; 
+  font-size: 40px;
+  color: #000000;
+  
+}
+.venha {
+  color: #ff0015;
+}
+h2 {
+  font-size: 60px;
+  color: blue;
+  margin-top: 40px;
+}
+/* ==========================
+   EXERCÍCIOS
+========================== */
+.opcao {
+  display: block;
+  background-color: #dcdcdc; /* cor dos retângulos */
+  width: 50%;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 35px;
+  color: black;
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.opcao:hover {
+  background-color: #b0b0b0; /* muda cor ao passar o mouse */
+}
+.yoga img{
+  width: 360px; 
+  height: auto;
+  position: absolute; /* permite posicionar livremente */
+  left: 20px;         /* distância da borda esquerda */
+  top: 180px;         /* distância do topo */
+  z-index: 1;         /* coloca a imagem na frente */
+}
+ /* ==========================
+   DESAFIO DO DIA
+========================== */ 
+#desafio{
+    font-size: 40px;
+    color: #e63946;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 250px;
+    background-color: #f0f8ff;
+    
+}
+/* ==========================
+   ROTINA DE VIDA ATIVA
+========================== */
+.rotina {
+    width: 900px;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 15px;
+    font-size: 30px;
+    text-align: left;
+    line-height: 2;
+    background-color: #ffffff;
+}
+/* ==========================
+   LOCAIS GRATUITOS PARA
+   EXERCÍCIOS
+========================== */
+.redonda {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block; /* Garante que a imagem ocupe a linha toda e jogue o texto para baixo */
+    margin: 0 auto 15px auto; /* Centraliza a imagem e adiciona um espaço embaixo dela */
+}
+
+.local a {
+    font-size: 24px; 
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    display: block; 
+    margin-bottom: 10px;
+}
+
+.local p {
+    margin: 5px 0; 
+    font-size: 20px;
+}
+
+.local {
+    display: inline-block;
+    width: 45%;
+    text-align: center;
+    vertical-align: top;
+}
+/* ==========================================================================
+   ESTILOS EXCLUSIVOS DA TELA DE AUTOAVALIAÇÃO
+   ========================================================================== */
+
+.box-quiz {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #f4f9f9;
+    border-radius: 12px;
+    border: 2px solid #ccc;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+/* Controla a exibição das telas do passo a passo */
+.tela-passo {
+    display: none;
+}
+
+.tela-passo.ativa {
+    display: block;
+}
+
+/* Caixa do Aviso Legal */
+.aviso-termo {
+    background-color: #fff3cd;
+    color: #856404;
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid #ffeeba;
+    text-align: left;
+    margin-bottom: 20px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Botões Principais de Ação */
+.btn-acao {
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.2s;
+}
+
+.btn-acao:hover {
+    background-color: #333333;
+}
+
+/* Botão de Ouvir Áudio (Acessibilidade) */
+.btn-som {
+    background-color: #ffffff;
+    border: 2px solid #000000;
+    color: #000000;
+    padding: 8px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    transition: all 0.2s;
+}
+
+.btn-som:hover {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+/* Inputs e Textos Internos do Quiz */
+.input-nota {
+    font-size: 24px;
+    width: 100px;
+    text-align: center;
+    padding: 8px;
+    border-radius: 6px;
+    border: 2px solid #000000;
+    margin: 15px 0;
+}
+
+.texto-progresso {
+    color: #666666;
+    font-weight: bold;
+}
+
+.pergunta-titulo {
+    font-size: 22px; 
+    margin: 20px 0;
+    line-height: 1.4;
+}
+
+/* Tela de Resultados */
+.texto-pontos {
+    font-size: 18px;
+}
+
+.resultado-texto {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.6;
+    margin: 20px 0;
+    text-align: left;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+/* Cores dinâmicas do resultado de acordo com a pontuação */
+.resultado-alto {
+    color: #bd2130;
+    background-color: #f8d7da;
+}
+
+.resultado-moderado {
+    color: #d39e00;
+    background-color: #fff3cd;
+}
+
+.resultado-baixo {
+    color: #1e7e34;
+    background-color: #d4edda;
+}
+
+.linha-separadora {
+    border: 0;
+    border-top: 1px solid #cccccc;
+    margin-top: 20px;
+}
+
+.texto-rodape {
+    font-size: 12px; 
+    color: #666666; 
+    margin-top: 10px;
+}
+/* ==========================
+   SERVIÇO DE SAÚDE MAIS
+   PRÓXIMO
+========================== */
+.bloco-saude{
+    width: 70%;
+    margin: 20px auto;
+    padding: 20px;  /*retangulos da paginas  da saude*/
+    border-radius: 10px;
+    text-align: center;
+    font-size: 22px;
+    background-color: #f0f8ff;
+}
+.bloco-saude a{
+    text-decoration: none;
+    color: black; /*links da pagina saude*/
+    font-weight: bold;
+    font-size: 28px;
+    
+}
+.bloco-saude p{
+    margin: 10px 0; /*paragrafos da pagina saude*/
+}
+.bloco-saude a:hover{
+    color: blue;
+}
+
+/* ==========================
+   numeros de emergencia
+========================== */
+.emergencia{
+    background-color: #ffffff;
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+}
+.emergencia img{
+    width: 90px;
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.emergencia a{
+    font-size: 50px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    display: block;
+    text-align: center;
+}
+.emergencia a:hover{
+    color: blue;
+}
+/* =====================*====
+   CADASTRO DE VOLUNT**IOS
+========================== */
+
+
+.form-voluntario {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 600px; 
+    margin: 0 auto;   
+}
+
+.form-voluntario h2 {
+    color: #2c3e50;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.form-voluntario .form-subtitulo {
+    color: #7f8c8d;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.form-voluntario .voluntario-row {
+    display: flex;
+    gap: 15px;
+}
+
+.form-voluntario .voluntario-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.form-voluntario .voluntario-group.curta {
+    flex: 0 0 100px; /* Largura menor específica para o campo de idade */
+}
+
+/* Estilizando as tags apenas se estiverem DENTRO do formulário de voluntário */
+.form-voluntario label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #34495e;
+    margin-bottom: 8px;
+    text-align: left;
+}
+
+.form-voluntario input, 
+.form-voluntario select, 
+.form-voluntario textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    width: 100%;
+    background-color: #fff; /* Garante fundo branco nos inputs */
+}
+
+.form-voluntario input:focus, 
+.form-voluntario select:focus, 
+.form-voluntario textarea:focus {
+    border-color: #3498db;
+}
+
+.form-voluntario textarea {
+    resize: vertical;
+}
+
+/* Botão de Enviar com classe única */
+.form-voluntario .btn-voluntario-enviar {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.form-voluntario .btn-voluntario-enviar:hover {
+    background-color: #27ae60;
+}
+
+/* Responsividade adaptada */
+@media (max-width: 480px) {
+    .form-voluntario .voluntario-row {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .form-voluntario .voluntario-group.curta {
+        flex: 1;
+    }
+}
+.form-voluntario-cancelar {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px dashed #cbd5e1; /* Linha pontilhada separando as duas partes */
+}
+
+.form-voluntario-cancelar h3 {
+    color: #2c3e50;
+    font-size: 18px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.form-voluntario-cancelar p {
+    color: #7f8c8d;
+    font-size: 13px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Botão de Excluir */
+.form-voluntario .btn-voluntario-excluir {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    white-space: nowrap; /* Impede o texto do botão de quebrar em duas linhas */
+}
+
+.form-voluntario .btn-voluntario-excluir:hover {
+    background-color: #c0392b;
+}
+
+.form-voluntario .btn-voluntario-excluir:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+}
+/* ========*=================
+   PLANTÃO PSICO*ÓGICO
+========================== **/
+.gif-container img{
+    width: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ffffff;
+}
+.gif-container img{
+    width: 300px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 50px;
+}
+.contador{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 50px;
+    font-size: 50px;
+    font-weight: bold;
+    color: blue;
+}
+.instrucao{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 300px;
+    font-size: 50px;
+    font-weight: bold;
+    color: rgb(255, 30, 30);
+  
+}
+.texto-plantao{
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+.cvv{
+    display: block;
+    text-align: center;
+    font-size: 35px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #0033cc;
+    margin-top: 500px;
+}
+.btn-som{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 120px; /* vai ajustando */
+
+    font-size: 25px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    background-color: blue;
+    color: white;
+    cursor: pointer;
+}
+@media (max-width: 768px){
+}

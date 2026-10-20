@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="skin.css">
+    <link rel="shortcut icon" href="Graphicloads-Medical-Health-Human-brain.256.png" type="favicon">
+    <title>Melhor Idade Conectada</title>
+</head>
+<body>
+<h2>Desafio Mental do Dia</h2>
+
+<p id="desafio"></p>
+<script>
+//LISTA DE DESAFIOS MENTAIS
+const desafios = [
+"Tente lembrar o nome de 5 amigos da infância.",
+"Encontre 5 objetos vermelhos dentro de casa.",
+"Escreva 3 coisas boas que aconteceram hoje.",
+"Leia uma notícia e conte para alguém o que entendeu.",
+"Tente decorar uma frase curta e repeti-la depois de 10 minutos.",
+"Faça uma lista com 5 frutas que você gosta.",
+"Lembre-se de uma receita antiga e escreva os ingredientes."
+];
+
+let numero = Math.floor(Math.random() * desafios.length);
+
+document.getElementById("desafio").innerHTML = desafios[numero];
+
+</script>
+</body>
+</html>

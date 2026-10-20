@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Melhor Idade Conectada</title>
+<link rel="stylesheet" href="skin.css">
+<link rel="shortcut icon" href="Graphicloads-Medical-Health-Human-brain.256.png" type="favicon">
+</head>
+<body>
+
+<h2>Desafio do Dia</h2>
+
+<p id="desafio"></p>
+
+<script>
+//LISTA DE DESAFIOS DO DIA
+const desafios = [
+"Dê bom dia para alguém hoje.",
+"Caminhe até o portão e respire fundo.",
+"Coloque uma música e movimente o corpo por 5 minutos.",
+"Faça alongamento dos braços e pernas.",
+"Escreva uma lembrança feliz do passado.",
+"Ligue para um familiar ou amigo.",
+"Faça um caça-palavras ou palavra cruzada."
+];
+
+let numero = Math.floor(Math.random() * desafios.length);
+
+document.getElementById("desafio").innerHTML = desafios[numero];
+
+</script>
+
+</body>
+</html>
