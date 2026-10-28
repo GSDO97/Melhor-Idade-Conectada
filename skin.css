@@ -235,6 +235,21 @@ h2 {
   top: 180px;         /* distância do topo */
   z-index: 1;         /* coloca a imagem na frente */
 }
+@media (max-width:768px){
+
+  .opcao{
+      width: 60%;
+      margin-left: 120px;
+      font-size: 28px;
+  }
+
+  .yoga img{
+      width: 350px;
+      left: -180px;
+      top: 200px;
+  }
+
+}
  /* ==========================
    DESAFIO DO DIA
 ========================== */ 
