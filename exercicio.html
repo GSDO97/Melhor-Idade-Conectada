@@ -11,12 +11,61 @@
   <!-- menu dos exercicios -->
     <h2>Exercícios</h2>
 
-  <div class="opcoes">
-    <a href="exercicio1.html" class="opcao">Desafio do Dia</a>
-    <a href="exercicio2.html" class="opcao">Desafio Mentais do Dia</a>
-    <a href="exercicio3.html" class="opcao">Locais Gratuitos para Exercicios</a>
-    <a href="exercicio4.html" class="opcao">Rotina de vida Ativa</a>
-  </div>
+     
+<a href="exercicio1.html" class="opcao">
+    <span class="audio" onclick="event.preventDefault(); event.stopPropagation(); lerDesafio();">🔊</span>
+    Desafio do Dia
+</a>
+
+<a href="exercicio2.html" class="opcao">
+    <span class="audio" onclick="event.preventDefault(); event.stopPropagation(); lerMental();">🔊</span>
+    Desafios Mentais do Dia
+</a>
+
+<a href="exercicio3.html" class="opcao">
+    <span class="audio" onclick="event.preventDefault(); event.stopPropagation(); lerLocais();">🔊</span>
+    Locais Gratuitos para Exercícios
+</a>
+
+<a href="exercicio4.html" class="opcao">
+    <span class="audio" onclick="event.preventDefault(); event.stopPropagation(); lerRotina();">🔊</span>
+    Rotina de Vida Ativa
+</a>
   <div class="yoga"><img src="imagens/yoga.png" alt="exercicio"></div>
+    <script>
+
+function lerDesafio(){
+    let fala = new SpeechSynthesisUtterance(
+    "Desafio do Dia. Clique para acessar os exercícios diários."
+    );
+    fala.lang = "pt-BR";
+    speechSynthesis.speak(fala);
+}
+
+function lerMental(){
+    let fala = new SpeechSynthesisUtterance(
+    "Desafios Mentais do Dia. Exercícios para estimular a memória e o raciocínio."
+    );
+    fala.lang = "pt-BR";
+    speechSynthesis.speak(fala);
+}
+
+function lerLocais(){
+    let fala = new SpeechSynthesisUtterance(
+    "Locais Gratuitos para Exercícios. Encontre lugares para praticar atividades físicas."
+    );
+    fala.lang = "pt-BR";
+    speechSynthesis.speak(fala);
+}
+
+function lerRotina(){
+    let fala = new SpeechSynthesisUtterance(
+    "Rotina de Vida Ativa. Dicas para manter hábitos saudáveis todos os dias."
+    );
+    fala.lang = "pt-BR";
+    speechSynthesis.speak(fala);
+}
+
+</script>
 </body>
 </html>
