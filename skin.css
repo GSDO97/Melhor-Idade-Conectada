@@ -238,15 +238,19 @@ h2 {
 @media (max-width:768px){
 
   .opcao{
-      width: 60%;
-      margin-left: 120px;
+      width: 70%;
+      margin: 20px auto;
       font-size: 28px;
+      position: relative;
+      top: 150px;
   }
 
   .yoga img{
-      width: 280px;
-      left: -180px;
-      top: 200px;
+      position: absolute;
+      width: 220px;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 90px;
   }
 
 }
