@@ -11,6 +11,9 @@
     <!-- LISTA PARA UMA ROTINA MELHOR -->
     <h2>Rotina de Vida Ativa</h2>
 
+<a href="javascript:void(0)" onclick="lerRotina()" class="audio-rotina">
+🔊 Ouvir Rotina</a>
+
 <div class="rotina">
 <p>✅ Procure dormir e acordar em horários parecidos todos os dias.</p>
 
@@ -33,5 +36,22 @@
 <p>✅ Respeite sempre as orientações do seu médico.</p>
 
 </div>
+<script>
+
+function lerRotina(){
+
+    const fala = new SpeechSynthesisUtterance(
+
+    "Rotina de Vida Ativa. Procure dormir e acordar em horários parecidos todos os dias. Faça pequenas caminhadas sempre que possível. Evite ficar muito tempo sentado. Faça alongamentos leves diariamente. Reserve alguns minutos para relaxar e respirar profundamente. Mantenha contato com amigos e familiares. Escute músicas que você gosta. Procure fazer atividades que tragam alegria e bem-estar. Mantenha sua mente ativa com leituras ou jogos simples. Respeite sempre as orientações do seu médico."
+
+    );
+
+    fala.lang = "pt-BR";
+
+    speechSynthesis.cancel();
+    speechSynthesis.speak(fala);
+}
+
+</script>
 </body>
 </html>
