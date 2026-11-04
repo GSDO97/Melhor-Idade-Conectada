@@ -9,6 +9,9 @@
 </head>
 <body>
 <h2>Desafio Mental do Dia</h2>
+<a href="javascript:void(0)" onclick="lerDesafioMental()" class="audio-desafio-02">
+🔊 Ouvir Desafio Mental
+</a>
 
 <p id="desafio"></p>
 <script>
@@ -26,6 +29,19 @@ const desafios = [
 let numero = Math.floor(Math.random() * desafios.length);
 
 document.getElementById("desafio").innerHTML = desafios[numero];
+function lerDesafioMental(){
+
+    const texto = document.getElementById("desafio").innerText;
+
+    const fala = new SpeechSynthesisUtterance(
+        "Desafio mental do dia. " + texto
+    );
+
+    fala.lang = "pt-BR";
+
+    speechSynthesis.cancel();
+    speechSynthesis.speak(fala);
+}
 
 </script>
 </body>
