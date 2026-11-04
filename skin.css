@@ -385,6 +385,28 @@ AUDIO DESAFIO 02
     text-align: center;
     vertical-align: top;
 }
+@media (max-width:768px){
+
+    .local{
+        display:block;
+        width:90%;
+        margin:30px auto;
+    }
+
+    .redonda{
+        width:220px;
+        height:220px;
+    }
+
+    .local a{
+        font-size:22px;
+    }
+
+    .local p{
+        font-size:20px;
+    }
+
+}
 /* ==========================================================================
    ESTILOS EXCLUSIVOS DA TELA DE AUTOAVALIAÇÃO
    ========================================================================== */
