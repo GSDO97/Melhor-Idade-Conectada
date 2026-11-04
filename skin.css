@@ -228,12 +228,34 @@ h2 {
   background-color: #b0b0b0; /* muda cor ao passar o mouse */
 }
 .yoga img{
-  width: 360px; 
+  width: 420px;
   height: auto;
-  position: absolute; /* permite posicionar livremente */
-  left: 20px;         /* distância da borda esquerda */
-  top: 180px;         /* distância do topo */
-  z-index: 1;         /* coloca a imagem na frente */
+  position: absolute;
+  left: -20px;
+  top: 220px;
+  z-index: 1;
+}
+.audio{
+    display:block;
+    width:300px;
+    margin:8px auto;
+    padding:2px;
+
+    background-color:#ea8eed;
+
+    border-radius:10px;
+
+    text-align:center;
+
+    text-decoration:none;
+
+    color:black;
+
+    font-size:25px;
+
+    font-weight:bold;
+
+    box-shadow:0 4px 8px rgba(0,0,0,0.2);
 }
 @media (max-width:768px){
 
@@ -253,11 +275,57 @@ h2 {
       top: 90px;
   }
 
+
 }
- .audio{
-    font-size: 35px;
-    margin-right: 15px;
-    cursor: pointer;
+/*============
+AUDIO DO EXERCICIO 01
+=================*/
+.audio-desafio-01{
+    display:block;
+    width:220px;
+    margin:20px auto;
+    padding:10px;
+
+    background-color:#eb8eed;
+
+    border-radius:10px;
+
+    text-align:center;
+
+    text-decoration:none;
+
+    color:black;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    box-shadow:0 4px 8px rgba(0,0,0,0.2);
+}
+/*=====================
+AUDIO DESAFIO 02
+=================*/
+.audio-desafio-02{
+    display:block;
+    width:260px;
+    margin:20px auto;
+    padding:10px;
+
+    background-color:#e88eed;
+
+    border-radius:10px;
+
+    text-align:center;
+
+    text-decoration:none;
+
+    color:black;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    box-shadow:0 4px 8px rgba(0,0,0,0.2);
 }
  /* ==========================
    DESAFIO DO DIA
