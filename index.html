@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="Graphicloads-Medical-Health-Human-brain.256.png" type="favicon">
+    <link rel="stylesheet" href="skin.css">
+    <title>Melhor Idade Conectada</title>
+</head>
+<body>
+  
+ <button onclick="lerMenu()" class="audio-menu">
+    🔊 Ouvir opções do menu
+</button>
+</div>
+<!-- MENU PRINCIPAL -->
+   <div>
+    <header class="menu">
+        <nav>
+            <a href="index.html">Menu</a>
+            <a href="consulta.html">Consulta</a>
+            <a href="conteudo_ed.html">Conteudo Educativo</a>
+            <a href="cadastro.html">Cadastro de Voluntarios</a>
+        </nav>
+    </header>
+</div>
+<div class="container">
+
+<a href="grupo.html" class="item">
+    <div class="quadrado">
+        <img src="imagens/grupo.png" alt="">
+    </div>
+    <span>1.Grupo De Apoio</span>
+</a>
+
+<a href="exercicio.html" class="item">
+    <div class="quadrado">
+        <img src="imagens/exercicio.png" alt="">
+    </div>
+    <span>2.Exercício</span>
+</a>
+
+<a href="plantao.html" class="item">
+    <div class="quadrado">
+        <img src="imagens/plantao.png" alt="">
+    </div>
+    <span>3.Plantão Psicológico</span>
+</a>
+
+<a href="autoavaliacao.html" class="item">
+    <div class="quadrado">
+        <img src="imagens/autoavaliacao.png" alt="">
+    </div>
+    <span>4.Autoavaliação</span>
+</a>
+
+<a href="saude.html" class="item">
+    <div class="quadrado">
+        <img src="imagens/saude.png" alt="">
+    </div>
+    <span>5.Serviço De Saúde Mais Próximo</span>
+</a>
+
+<a href="emergencia.html" class="item">
+    <div class="quadrado">
+        <img src="imagens/samu.png" alt="">
+    </div>
+    <span>6.Emergência</span>
+</a>
+
+</div>
+<script>
+function lerMenu() {
+
+    const texto = `
+    Bem vindo ao sistema Melhor Idade Conectada.
+
+    Opção 1. Grupo de Apoio.
+
+    Opção 2. Exercício.
+
+    Opção 3. Plantão Psicológico.
+
+    Opção 4. Autoavaliação.
+
+    Opção 5. Serviço de Saúde Mais Próximo.
+
+    Opção 6. Emergência.
+    `;
+
+    const fala = new SpeechSynthesisUtterance(texto);
+
+    fala.lang = "pt-BR";
+    fala.rate = 1;
+    fala.pitch = 1;
+    fala.volume = 1;
+
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(fala);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="skin.css">
+    <link rel="shortcut icon" href="Graphicloads-Medical-Health-Human-brain.256.png" type="favicon">
+    <title>Melhor Idade Conectada</title>
+</head>
+<body>
+  <!-- menu dos exercicios -->
+    <h2>Exercícios</h2>
+
+<a href="javascript:void(0)" onclick="lerMenu()" class="audio">
+🔊 Ouvir Opções
+</a>
+
+<a href="exercicio1.html" class="opcao">
+1 - Desafio do Dia
+</a>
+
+<a href="exercicio2.html" class="opcao">
+2 - Desafios Mentais do Dia
+</a>
+
+<a href="exercicio3.html" class="opcao">
+3 - Locais Gratuitos para Exercícios
+</a>
+
+<a href="exercicio4.html" class="opcao">
+4 - Rotina de Vida Ativa
+</a>
+
+<script>
+function lerMenu(){
+
+
+    const fala = new SpeechSynthesisUtterance(
+    "Bem-vindo à página de exercícios. Clique em uma das opções abaixo. Opção 1, Desafio do Dia. Opção 2, Desafios Mentais do Dia. Opção 3, Locais Gratuitos para Exercícios. Opção 4, Rotina de Vida Ativa."
+    );
+
+    fala.lang = "pt-BR";
+
+    speechSynthesis.cancel();
+    speechSynthesis.speak(fala);
+}
+
+</script>
+</body>
+</html>

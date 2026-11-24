@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="Graphicloads-Medical-Health-Human-brain.256.png" type="favicon">
+  <link rel="stylesheet" href="skin.css">
+  <title>Melhor Idade Conectada</title>
+</head>
+<body>
+  <div class="conteudo-educativo">
+    <h2>Conteúdo Educativo</h2>
+    <p id="frase"></p>
+  </div>
+<!-- mensagens da pagina -->
+  <script>
+    const frases = [
+      "Respire fundo e lembre-se: um dia de cada vez.",
+      "Conversar com alguém pode mudar seu dia.",
+      "Ouvir música calma ajuda a relaxar e melhorar o humor.",
+      "Movimente-se! Caminhar é bom para o corpo e para a mente.",
+      "A gratidão transforma pequenos momentos em grandes alegrias.",
+      "Sorria — mesmo um sorriso pequeno faz bem ao coração."
+    ];
+    
+    function mostrarFrase() {
+      const indice = Math.floor(Math.random() * frases.length);
+      document.getElementById("frase").innerText = frases[indice];
+    }
+
+    window.onload = mostrarFrase;
+  </script>
+</body>
+</html>

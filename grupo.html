@@ -1,0 +1,69 @@
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="skin.css">
+  <link rel="shortcut icon" href="Graphicloads-Medical-Health-Human-brain.256.png" type="favicon">
+  <title>Melhor Idade Conectada</title>
+</head>
+<body class="apoio">
+  <h2>Grupos de Apoio</h2>
+  <button onclick="lerTexto()">🔊 Ouvir informações dos grupos</button> <!--botao de ouvir-->
+<!-- LOCALIZAÇAO E INFORMAÇAO DOS LOCAIS DE GRUPO DE APOIO -->
+  <div class="retangulo"><a href="https://www.google.com/maps/search/?api=1&query=Av.+Fortunato+Ernesto+Vetorasso,+711+-+Jardim+Res.+Vetorasso,+São+José+do+Rio+Preto+-+SP" target="_blank">
+ 1-UBS Vetorasso: Quarta-feira 13:00 às 14:00
+</a></div>
+  <div class="retangulo"><a href="https://www.google.com/maps/search/?api=1&query=Av.+Presidente+Getúlio+Vargas,+381+-+Jardim+Tangará,+São+José+do+Rio+Preto+-+SP" target="_blank">2-UBS Tangará: Quinta-feira 13:00 às 14:00
+</a></div>
+  <div class="retangulo"><a href="https://www.google.com/maps/search/?api=1&query=Av.+Monte+Aprazível,+3269+-+Eldorado,+São+José+do+Rio+Preto+-+SP" target="_blank">
+3-UBS Eldorado: Sexta-feira 13:00 às 14:00
+</a></div>
+  <div class="retangulo"><a href="https://www.google.com/maps/search/?api=1&query=Av.+Fortunato+Ernesto+Vetorasso,+711+-+Jardim+Res.+Vetorasso,+São+José+do+Rio+Preto+-+SP" target="_blank">
+4-UBS Vetorasso: Segunda-feira 13:00 às 14:00
+</a></div>
+<!-- arrumando ordem de imagens do grupo de apoio-->
+  <p class="mensagem">
+    O grupo pode ser uma boa companhia e até trazer novas amizades.<br><!-- adicionar no git hub nao esquecer-->
+  </p>
+  <img src="imagens/idosos.png" alt="idosos" class="idosos">
+   <p class="venha">VENHA PARTICIPAR!</p>
+  <script>
+function lerTexto() {
+    const texto =  `
+Grupo número 1.
+UNIDADE BASICA DE SAUDE Vetorazzo.
+Quarta-feira.
+Das 13 às 14 horas.
+
+Grupo número 2.
+UNIDADE BASICA DE SAUDE Tangará.
+Quinta-feira.
+Das 13 às 14 horas.
+
+Grupo número 3.
+UNIDADE BASICA DE SAUDE Eldorado.
+Sexta-feira.
+Das 13 às 14 horas.
+
+Grupo número 4.
+UNIDADE BASICA DE SAUDE Vetorazzo.
+Segunda-feira.
+Das 13 às 14 horas.
+
+O grupo pode ser uma boa companhia e trazer novas amizades.
+
+Venha participar.
+`;
+    
+
+    const fala = new SpeechSynthesisUtterance(texto);
+    fala.lang = "pt-BR";
+    fala.rate = 0.9;
+    fala.pitch = 1;
+    fala.volume = 1;
+    speechSynthesis.speak(fala);
+}
+
+</script>
+</body>
+</html>
